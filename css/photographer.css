@@ -1,11 +1,55 @@
 #contact_modal {
     display: none;
 }
-
+/*Style du header de la page photographe*/
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+    max-width: 1240px;
+    height: 313px;
+    margin: 30px 100px 20px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+}
+
+.photographInfo {
+    margin-left: 50px;
+    margin-top: 70px;
+    padding-right: 80px;
+}
+
+.photographInfo h2{
+    font-size: 64px;
+    color: #D3573C;
+    margin: 0;
+}
+
+.photographInfo h3{
+    font-size: 24px;
+    color: #901C1C;
+    margin: 0;
+}
+
+.photographInfo p{
+    font-size: 18px;
+    color: #525252;
+    margin: 0;
+    margin-top: 10px;
+}
+
+#bloc-contact{
+    margin: auto;
+}
+
+#bloc-picture{
+    margin: auto;
+    margin-right: 40px;
+}
+
+.photograph-header img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
 }
 
 .contact_button {
@@ -18,8 +62,10 @@
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
-    cursor: pointer;
+    cursor: pointer; 
 }
+
+/*Style de la modal*/
 
 .modal {
     border-radius: 5px;
@@ -74,3 +120,124 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+/*Style de la gallerie d'images*/
+
+.sortSelect{
+    display: flex;
+    margin-left: 100px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 60px;
+}
+
+.sortSelect select{
+    margin-left: 25px;
+    background-color: #911C1C;
+    color: #ffffff; 
+    width: 170px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.sortSelect option{
+    margin-left: 20px;
+    text-align: center;
+}
+
+.media-card{
+    display: flex;
+    flex-direction: column;
+}
+
+.mediaInfo {
+    display: flex;
+    justify-content: space-between;
+    color: #901C1C;
+}
+
+.mediaTittle{
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.mediaTittle p{
+    margin: 0;
+    max-width: 95%;
+}
+
+#mediaLikesAndPrice {
+    display: flex;
+}
+
+#mediaLikesAndPrice p{
+    margin: auto;
+    margin-right: 7px;
+    font-weight: 500;
+}
+
+#mediaLikesAndPrice img{
+    margin: auto;
+    width: 18px;
+    height: 18px;
+}
+
+.media_section{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 70px;
+    column-gap: 95px;
+}
+
+.media-card img{
+    height: 300px;
+    width: 350px;
+}
+
+.media-card video{
+    height: 300px;
+    width: 350px;
+}
+
+.text-likes img {
+    width: 10px;
+    height: 10px;
+}
+
+/*Style de la bannière en bas de page*/
+
+#banner {
+    background-color: #DB8876;
+    width: 380px;
+    height: 75px;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    border-radius: 5px 5px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.likes {
+    display: flex;
+}
+
+.likes img{
+    width: 18px;
+    margin: auto;
+}
+
+.likes p{
+    margin-left: 30px;
+    margin-right: 7px;
+}
+
+.price{
+    margin-right: 34px;
+}
+
