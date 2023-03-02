@@ -29,20 +29,31 @@ async function photographerBannerFactory() {
         </div>
     `
 }
+/**
+ * Fonction permettant d'ajouter un like à une photo en cliquant sur l'icone du coeur // incrémente la valeur totale
+ * @param {*} id Prends en param l'id de la photo pour l'utiliser en tant qu'attribut id
+ */
+async function addLike(id){
+    const like = document.getElementById(id);
+    let likeContent = like.textContent;
+    like.textContent = ++likeContent;
+    const totalLikesSection = document.querySelector(".likes p");
+    let totalLikes = totalLikesSection.textContent;
+    totalLikesSection.textContent = ++totalLikes;
+}
 
 /**
- * 
- * @param {*} data 
+ * Fonction qui génère le code html relatif à l'affichage des médias
+ * @param {*}  
  */
-
 function mediaFactory(target, mediaData, photographer) {
     target.innerHTML = mediaData.map((media) => `
         <article class="media-card"> 
             <div class = "bloc-img">
                 ${
                 media.image
-                    ? `<img class="for-zoom" src="assets/images/media/${photographer.name}/${media.image}" alt="photo de ${photographer.name}-${media.title}"></img>`
-                    : `<video class="for-zoom"><source src="assets/images/media/${photographer.name}/${media.video}" type="video/mp4" alt="vidéo de ${photographer.name}"></video>`
+                    ? `<img src="assets/images/media/${photographer.name}/${media.image}" alt="photo de ${photographer.name}-${media.title}"></img>`
+                    : `<video controls width="250"><source src="assets/images/media/${photographer.name}/${media.video}" type="video/mp4" alt="vidéo de ${photographer.name}"></video>`
                 }
             </div>
             <div class="mediaInfo">
@@ -50,8 +61,8 @@ function mediaFactory(target, mediaData, photographer) {
                     <p>${media.title}</p>
                 </div>
                 <div id="mediaLikesAndPrice">
-                    <p>${media.likes}</p>
-                    <img src="./assets/icons/heart-solid-red.svg" alt="bouton like en forme de coeur">
+                    <p id="${media.id}">${media.likes}</p>
+                    <img src="./assets/icons/heart-solid-red.svg" alt="bouton like en forme de coeur" onclick="addLike(${media.id})">
                 </div>
             </div>
         </article>

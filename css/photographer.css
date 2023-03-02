@@ -67,31 +67,47 @@
 
 /*Style de la modal*/
 
+.contact_modal{
+    transition: all ease-in-out 1s;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
+    max-width: 670px;
+    max-height: 900px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 35px;
+    padding-top: 15px;
     margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .modal header {
     justify-content: space-between;
     width: 100%;
+    height: 100%;
 }
 
 .modal header img {
     cursor: pointer;
+    top: 35px;
+    right: 35px;
+    position: absolute;
 }
 
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
+    margin-left: 0px;
+    margin-top: 0px;
 }
 
 form {
@@ -119,6 +135,10 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+.message{
+    height: 170px;
 }
 
 /*Style de la gallerie d'images*/
@@ -164,7 +184,7 @@ form input {
 
 .mediaTittle p{
     margin: 0;
-    max-width: 95%;
+    max-width: 250px;
 }
 
 #mediaLikesAndPrice {
@@ -175,6 +195,7 @@ form input {
     margin: auto;
     margin-right: 7px;
     font-weight: 500;
+    font-size: 24px;
 }
 
 #mediaLikesAndPrice img{
@@ -199,6 +220,7 @@ form input {
 .media-card video{
     height: 300px;
     width: 350px;
+    object-fit: fill;
 }
 
 .text-likes img {
@@ -215,7 +237,7 @@ form input {
     position: fixed;
     z-index: 1;
     bottom: 0;
-    right: 0;
+    right: 35px;
     border-radius: 5px 5px 0px 0px;
     display: flex;
     justify-content: space-between;

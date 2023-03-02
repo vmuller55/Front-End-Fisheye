@@ -30,15 +30,38 @@ async function getMediaOfPhotographer(){
     return mediaOfPhotographer;
 }
 
-async function sortByLike(){
+async function sortBy(option){
     const media = await getMediaOfPhotographer();
-    return media.sort((a, b) => b.likes - a.likes)
+    console.log(option)
+    if (option === "date"){ 
+        return media.sort((a, b) => new Date (a.date).valueOf() - new Date(b.date).valueOf());
+    }
+    else{
+        if(option === "name") {
+             return media.sort((a, b) => {
+                if (a.title > b.title) {
+                    return 1
+                  } else if (b.title > a.title) {
+                    return -1
+                  } else {
+                    return 0
+                  }
+            });
+        }
+        else {
+            return media.sort((a, b) => b.likes - a.likes)
+        }
+    }
 }
+
+
+
 
 async function displayMedia(media){
     const mediaSection = document.querySelector('.media_section');
-    const photographerInfo = await getPhotographerInfo()
-    media = media ?? (await sortByLike())
+    const photographerInfo = await getPhotographerInfo();
+    const selectedOption = document.getElementById("sortBy");
+    media = media ?? (await sortBy(selectedOption.value))
     mediaFactory(mediaSection, media, photographerInfo)
 }
 
@@ -54,6 +77,7 @@ async function getTotalLikes(){
 function init() {
     photographerHeader();
     displayMedia();
+
 }
 
 init();
