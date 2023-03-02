@@ -1,3 +1,8 @@
+/**
+ * Fonction qui met en place le code HTML relatif au header du photographe
+ * @param {*} target 
+ * @param {*} data 
+ */
 function photographerHeaderFactory (target, data) {
     target.innerHTML = `
         <div class="photographInfo">
@@ -14,7 +19,9 @@ function photographerHeaderFactory (target, data) {
     `
     photographerBannerFactory();
 }
-
+/**
+ * Fonction qui met en place le code HTML relatif au petit encart de la page
+ */
 async function photographerBannerFactory() {
     const totalLikes =  await getTotalLikes();
     const photographerInfo = await getPhotographerInfo();
@@ -35,11 +42,28 @@ async function photographerBannerFactory() {
  */
 async function addLike(id){
     const like = document.getElementById(id);
+    console.log(like.nextElementSibling)
     let likeContent = like.textContent;
     like.textContent = ++likeContent;
     const totalLikesSection = document.querySelector(".likes p");
     let totalLikes = totalLikesSection.textContent;
     totalLikesSection.textContent = ++totalLikes;
+    like.nextElementSibling.setAttribute("onclick", "removeLike(" + id + ")");
+    
+}
+/**
+ * Fonction permettant d'enlever le like 
+ * @param {*} id 
+ */
+async function removeLike(id) {
+    const like = document.getElementById(id);
+    console.log(like.nextElementSibling)
+    let likeContent = like.textContent;
+    like.textContent = --likeContent;
+    const totalLikesSection = document.querySelector(".likes p");
+    let totalLikes = totalLikesSection.textContent;
+    totalLikesSection.textContent = --totalLikes;
+    like.nextElementSibling.setAttribute("onclick", "addLike(" + id + ")");
 }
 
 /**
