@@ -31,7 +31,7 @@ function closeModal() {
   enableScroll();
 }
 /**
- * Données du formulaire
+ * Permet de vérifier si le formulaire est rempli et affiche les infos en dans la console 
  */
 sendBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -45,26 +45,9 @@ sendBtn.addEventListener("click", (e) => {
   }
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
 * Désactivation du scroll lorsque la modal est ouverte
 */
-// left: 37, up: 38, right: 39, down: 40,
-// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-
 var keys = {37: 1, 38: 1, 39: 1, 40: 1};
 
 function preventDefault(e) {
@@ -76,7 +59,7 @@ function preventDefaultForScrollKeys(e) {
     return false;
   }
 }
-// modern Chrome requires { passive: false } when adding event
+
 var supportsPassive = false;
 try {
   window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
@@ -88,15 +71,12 @@ catch(e) {}
 var wheelOpt = supportsPassive ? { passive: false } : false;
 var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 
-// call this to Disable
 function disableScroll() {
-  window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
-  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
-  window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+  window.addEventListener('DOMMouseScroll', preventDefault, false); 
+  window.addEventListener(wheelEvent, preventDefault, wheelOpt); 
+  window.addEventListener('touchmove', preventDefault, wheelOpt); 
   window.addEventListener('keydown', preventDefaultForScrollKeys, false);
 }
-
-// call this to Enable
 function enableScroll() {
   window.removeEventListener('DOMMouseScroll', preventDefault, false);
   window.removeEventListener(wheelEvent, preventDefault, wheelOpt); 

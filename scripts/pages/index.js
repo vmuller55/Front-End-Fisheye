@@ -1,6 +1,6 @@
 /**
  * Fonction permettant de fetch les donnée du fichier JSON
- * @returns la réponse du fetch dans une constante
+ * @returns la réponse du fetch
  */
 async function getPhotographers() {
     const response = await fetch('./data/photographers.json');
@@ -8,8 +8,8 @@ async function getPhotographers() {
     return photographer;
 }
 /**
- * Fonction qui utilise le resultat du fetch précédant stocké dans une constante dans la fonction init 
- * @param {*} photographers const déclaré dans la fonction init, elle récupère le resultat du fetch
+ * Fonction qui initialise la fonction fatory relative 
+ * @param {*} photographers const déclaré dans la fonction init, elle récupère le resultat du fetch de la fonction getPhotographers
  */
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
