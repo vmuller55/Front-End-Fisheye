@@ -52,7 +52,7 @@
     border-radius: 50%;
 }
 
-.contact_button {
+.contact_button{
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -67,10 +67,6 @@
 
 /*Style de la modal*/
 
-.contact_modal{
-    transition: all ease-in-out 1s;
-}
-
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -83,6 +79,7 @@
     justify-content: space-between;
     padding: 35px;
     padding-top: 15px;
+    
     margin: auto;
     position: absolute;
     top: 50%;
@@ -125,6 +122,7 @@ form label {
 form div {
     display: flex;
     flex-direction: column;
+    row-gap: 0px;
     width: 100%;
     align-items: self-start;
     margin-bottom: 26px;
@@ -202,6 +200,7 @@ form input {
     margin: auto;
     width: 18px;
     height: 18px;
+    cursor: pointer;
 }
 
 .media_section{

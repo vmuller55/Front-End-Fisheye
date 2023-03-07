@@ -49,7 +49,6 @@ async function getMediaOfPhotographer(){
  */
 async function sortBy(option){
     const media = await getMediaOfPhotographer();
-    console.log(option)
     if (option === "date"){ 
         return media.sort((a, b) => new Date (a.date).valueOf() - new Date(b.date).valueOf());
     }

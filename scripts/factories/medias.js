@@ -42,7 +42,6 @@ async function photographerBannerFactory() {
  */
 async function addLike(id){
     const like = document.getElementById(id);
-    console.log(like.nextElementSibling)
     let likeContent = like.textContent;
     like.textContent = ++likeContent;
     const totalLikesSection = document.querySelector(".likes p");
@@ -57,7 +56,6 @@ async function addLike(id){
  */
 async function removeLike(id) {
     const like = document.getElementById(id);
-    console.log(like.nextElementSibling)
     let likeContent = like.textContent;
     like.textContent = --likeContent;
     const totalLikesSection = document.querySelector(".likes p");

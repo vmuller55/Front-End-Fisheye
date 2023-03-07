@@ -10,7 +10,7 @@
   </head>
   <body>
     <header>
-      <a href="/Front-End-Fisheye//index.html"><img src="assets/images/logo.png" class="logo"></a>
+      <a href="./index.html"><img src="assets/images/logo.png" class="logo"></a>
     </header>
     <div id="banner"></div>
     <main id="main">
@@ -35,26 +35,22 @@
           <img src="assets/icons/close.svg" onclick="closeModal()">
         </header>
 				<form>
-					<div>
-						<label>Prénom</label>
-						<input/>
-            <label>Nom</label>
-						<input/>
-            <label>Email</label>
-						<input/>
+          <div>
+              <label for="first">Prénom</label>
+              <input class="text-control"	type="text"	id="first" name="first"	minlength="2">
+              <label for="last">Nom</label>
+              <input class="text-control"	type="text"	id="last" name="last" minlength="2">
+              <label for="email">E-mail</label>
+              <input class="text-control"	type="email" id="email"	name="email">
             <label>Votre message</label>
 						<input class="message"/>
 					</div>
-          <a href="/Front-End-Fisheye/index.html">
-            <button class="contact_button">Envoyer</button>
-          </a>
-          </form>
-			</div>
+          <button id="sendButton" class="contact_button">Envoyer</button>
+        </form>
 		</div>
-    
     <footer></footer>
-    <script src="/Front-End-Fisheye/scripts/pages/photographer.js"></script>
-    <script src="/Front-End-Fisheye/scripts/factories/medias.js"></script>
+    <script src="./scripts/pages/photographer.js"></script>
+    <script src="./scripts/factories/medias.js"></script>
     <script src="./scripts/utils/contactForm.js"></script>
   </body>
 </html>
