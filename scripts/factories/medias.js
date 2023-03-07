@@ -37,33 +37,6 @@ async function photographerBannerFactory() {
     `
 }
 /**
-* Fonction permettant d'ajouter un like à une photo en cliquant sur l'icone du coeur // incrémente la valeur totale
-* @param {String} id Prends en param l'id de la photo pour l'utiliser en tant qu'attribut id
-*/
-async function addLike(id){
-    const like = document.getElementById(id);
-    let likeContent = like.textContent;
-    like.textContent = ++likeContent;
-    const totalLikesSection = document.querySelector(".likes p");
-    let totalLikes = totalLikesSection.textContent;
-    totalLikesSection.textContent = ++totalLikes;
-    like.nextElementSibling.setAttribute("onclick", "removeLike(" + id + ")");
-    
-}
-/**
-* Fonction permettant d'enlever le like 
-* @param {String} id 
-*/
-async function removeLike(id) {
-    const like = document.getElementById(id);
-    let likeContent = like.textContent;
-    like.textContent = --likeContent;
-    const totalLikesSection = document.querySelector(".likes p");
-    let totalLikes = totalLikesSection.textContent;
-    totalLikesSection.textContent = --totalLikes;
-    like.nextElementSibling.setAttribute("onclick", "addLike(" + id + ")");
-}
-/**
  * Fonction permettant de créer le code HTML relatif aux cards des photos
  * @param {HTMLElement} target 
  * @param {Array} mediaData 
@@ -109,42 +82,4 @@ function lightBoxFactory (medias, photographerInfo, elements, index){
         }
         <h2>${medias[index].title}</h2>
     `    
-}
-/**
- * Fonction permettant de navigiuer dans la lightbox
- * @param {Number} indexCurrentImage 
- * @param {Array} medias 
- * @param {Array} photographerInfo 
- * @param {HTMLElement} elements 
- * @returns l'index incrémenté ou déprecié 
- */
-function previousMedia (indexCurrentImage, medias, photographerInfo, elements) {
-    if (indexCurrentImage === 0 ) {
-        indexCurrentImage = medias.length -1
-    } else {
-        indexCurrentImage --
-    }
-    lightBoxFactory (medias, photographerInfo, elements, indexCurrentImage);
-    return indexCurrentImage;
-}
-function nextMedia (indexCurrentImage, medias, photographerInfo, elements) {
-    if (indexCurrentImage === medias.length - 1 ) {
-        indexCurrentImage = 0
-    } else {
-        indexCurrentImage ++
-    }
-    lightBoxFactory (medias, photographerInfo, elements, indexCurrentImage);
-    return indexCurrentImage;
-}
-/**
- * Fonction permettant de fermer la lightBox
- */
-function closeLightBox() {
-    const lightBox = document.getElementById("lightBox");
-    const header = document.querySelector("header");
-    main.style.display = "block";
-    banner.style.display = "flex";
-    logo.style.display = "block";
-    lightBox.style.display = "none"
-    header.style.display = "block";
 }

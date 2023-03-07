@@ -82,6 +82,33 @@ async function displayMedia(media){
     mediaFactory(mediaSection, media, photographerInfo)
 }
 /**
+* Fonction permettant d'ajouter un like à une photo en cliquant sur l'icone du coeur // incrémente la valeur totale
+* @param {String} id Prends en param l'id de la photo pour l'utiliser en tant qu'attribut id
+*/
+function addLike(id){
+    const like = document.getElementById(id);
+    const totalLikesSection = document.querySelector(".likes p");
+    let totalLikes = totalLikesSection.textContent;
+    let likeContent = like.textContent;
+    like.textContent = ++likeContent;
+    totalLikesSection.textContent = ++totalLikes;
+    like.nextElementSibling.setAttribute("onclick", "removeLike(" + id + ")");
+    
+}
+/**
+* Fonction permettant d'enlever le like 
+* @param {String} id 
+*/
+function removeLike(id) {
+    const like = document.getElementById(id);
+    const totalLikesSection = document.querySelector(".likes p");
+    let likeContent = like.textContent;
+    let totalLikes = totalLikesSection.textContent;
+    like.textContent = --likeContent;
+    totalLikesSection.textContent = --totalLikes;
+    like.nextElementSibling.setAttribute("onclick", "addLike(" + id + ")");
+}
+/**
 * Fonction qui permet de calculer le nombre total de like
 * @returns le nombre total de like
 */
@@ -92,35 +119,6 @@ async function getTotalLikes(){
         likes += medias[i].likes;
     }
     return likes
-}
-/**
- * Fonciton permettant d'ouvrir la lightBox et initialise la fonction factory relative
- * @param {number} id 
- */
-async function openLightBox(id) {
-    const photographerInfo = await getPhotographerInfo();
-    const medias = await getMediaOfPhotographer();
-    const elements = document.querySelector(".lightBoxMedia");
-    const lightBox = document.getElementById("lightBox");
-    const leftArrow = document.getElementById("leftArrow");
-    const rightArrow = document.getElementById("rightArrow");
-    const currentImage = medias.find((e) => e.id === id)
-    let indexCurrentImage = medias.indexOf(currentImage);
-    lightBox.style.display = "flex";
-    lightBoxFactory(medias, photographerInfo, elements, indexCurrentImage);
-    
-    leftArrow.addEventListener("click", () => {
-        indexCurrentImage = previousMedia(indexCurrentImage, medias, photographerInfo, elements)
-    })
-    rightArrow.addEventListener("click", () => {
-        indexCurrentImage = nextMedia(indexCurrentImage, medias, photographerInfo, elements)
-    })
-    const header = document.querySelector("header");
-    header.style.display = "none";
-    main.style.display = "none";
-    banner.style.display = "none";
-    logo.style.display = "none";
-    
 }
 /**
 * Fonction qui initialise les fonctions élémentaires
