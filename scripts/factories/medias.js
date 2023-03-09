@@ -3,7 +3,7 @@
 * @param {HTMLElement} target 
 * @param {Array} data 
 */
-function photographerHeaderFactory (target, data) {
+function photographerHeaderDisplay(target, data, media) {
     target.innerHTML = `
         <div class="photographInfo">
         <h2 class="test">${data.name}</h2>
@@ -17,14 +17,13 @@ function photographerHeaderFactory (target, data) {
         <img src="assets/photographers/${data.portrait}" alt="photo de ${data.name}">
         </div>
     `
-    photographerBannerFactory();
+    photographerBannerDisplay(data, media);
 }
 /**
 * Fonction qui met en place le code HTML relatif au petit encart de la page
 */
-async function photographerBannerFactory() {
-    const totalLikes =  await getTotalLikes();
-    const photographerInfo = await getPhotographerInfo();
+function photographerBannerDisplay(data, media) {
+    const totalLikes = getTotalLikes(media);
     const target = document.getElementById("banner");
     target.innerHTML = `
         <div class="likes">
@@ -32,7 +31,7 @@ async function photographerBannerFactory() {
         <img src="./assets/icons/heart-solid.svg">
         </div>
         <div class="price">
-        <p>${photographerInfo.price}€ / jour</p>
+        <p>${data.price}€ / jour</p>
         </div>
     `
 }
@@ -42,14 +41,15 @@ async function photographerBannerFactory() {
  * @param {Array} mediaData 
  * @param {Array} photographer 
  */
+
 function mediaFactory(target, mediaData, photographer) {
     target.innerHTML = mediaData.map((media) => `
         <article class="media-card"> 
         <div class = "bloc-img">
         ${
             media.image
-            ? `<button onclick="openLightBox(${media.id})"> <img src="assets/images/media/${photographer.name}/${media.image}" alt="photo de ${photographer.name}-${media.title}"></img></button>`
-            : `<button onclick="openLightBox(${media.id})"> <video controls width="250"><source src="assets/images/media/${photographer.name}/${media.video}" type="video/mp4" alt="vidéo de ${photographer.name}"></video></button>`
+            ? `<button onclick="openLightBox(${media.id} , ${ media.photographerId})" > <img src="assets/images/media/${photographer.name}/${media.image}" alt="photo de ${photographer.name}-${media.title}"></img></button>`
+            : `<button onclick="openLightBox(${media.id} , ${ media.photographerId})" > <video controls width="250"><source src="assets/images/media/${photographer.name}/${media.video}" type="video/mp4" alt="vidéo de ${photographer.name}"></video></button>`
         }
         </div>
         <div class="mediaInfo">
@@ -58,28 +58,11 @@ function mediaFactory(target, mediaData, photographer) {
         </div>
         <div id="mediaLikesAndPrice">
         <p id="${media.id}">${media.likes}</p>
-        <img src="./assets/icons/heart-solid-red.svg" alt="bouton like en forme de coeur" onclick="addLike(${media.id})">
+        <img class="noLike" src="./assets/icons/heart-solid-red.svg" alt="bouton like en forme de coeur" onclick="like(${media.id})">
         </div>
         </div>
         </article>
     `
     )
     .join('')
-}
-/**
- * Fonction permettant de créer le code HTML relatif à la lightbox
- * @param {Array} medias 
- * @param {Array} photographerInfo 
- * @param {HTMLElement} elements 
- * @param {Number} index 
- */
-function lightBoxFactory (medias, photographerInfo, elements, index){
-    elements.innerHTML = `
-        ${
-            medias[index].image
-            ? `<img src="./assets/images/media/${photographerInfo.name}/${medias[index].image}" alt="">`
-            : `<video controls autoplay "><source src="assets/images/media/${photographerInfo.name}/${medias[index].video}"  type="video/mp4" alt="vidéo de ${photographerInfo.name}"></video>`
-        }
-        <h2>${medias[index].title}</h2>
-    `    
 }

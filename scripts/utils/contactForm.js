@@ -4,8 +4,8 @@ const emailInput = document.getElementById("email");
 const sendBtn = document.getElementById("sendButton")
 const modal = document.getElementById("contact_modal");
 const main = document.getElementById('main');
-const banner = document.getElementById('banner');
-const logo = document.querySelector('.logo');
+const logo = document.querySelector('header');
+
 
 /**
  * Fonction pour ouvrir la modale de formulaire
@@ -14,20 +14,25 @@ function displayModal() {
   let nameLocation = document.querySelector(".modal h2");
   let who = document.querySelector(".test");
   nameLocation.innerHTML = `Contactez-moi <br/> ${who.textContent}`;
+  modal.setAttribute("aria-hidden", false);
+  main.setAttribute("aria-hidden", true);
+  logo.setAttribute("aria-hidden", true);
   modal.style.display = "block";
-  main.style.display = "none";
-  banner.style.display = "none";
-  logo.style.display = "none";
+  modal.focus();
   disableScroll();
 }
 /**
  * Fonction pour fermer la modale
  */
 function closeModal() {
+  modal.setAttribute("aria-hidden", "true");
+  main.setAttribute("aria-hidden", "false");
+  banner.setAttribute("aria-hidden", "false");
+  logo.setAttribute("aria-hidden", "false");
   modal.style.display = "none";
-  main.style.display = "block";
-  banner.style.display = "flex";
-  logo.style.display = "block";
+  main.style.opacity = "1";
+  banner.style.opacity = "1";
+  logo.style.opacity = "1";
   enableScroll();
 }
 /**

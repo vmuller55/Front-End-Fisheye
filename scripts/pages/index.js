@@ -1,13 +1,4 @@
 /**
- * Fonction permettant de fetch les donnée du fichier JSON
- * @returns la réponse du fetch
- */
-async function getPhotographers() {
-    const response = await fetch('./data/photographers.json');
-    const photographer = await response.json();
-    return photographer;
-}
-/**
  * Fonction qui initialise la fonction fatory relative 
  * @param {*} photographers const déclaré dans la fonction init, elle récupère le resultat du fetch de la fonction getPhotographers
  */
@@ -25,7 +16,7 @@ async function displayData(photographers) {
  */
 async function init() {
     // Récupère les datas des photographes
-    const { photographers } = await getPhotographers();
+    const [{ photographers }] = await getPhotographers();
     displayData(photographers);
 };
 

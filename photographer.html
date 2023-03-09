@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css">
   <link href="css/photographer.css" rel="stylesheet" type="text/css">
@@ -9,17 +9,17 @@
   <title>Fisheye - photographe </title>
 </head>
 <body class="photographPage">
-  <header>
-    <a href="./index.html"><img src="assets/images/logo.png" class="logo"></a>
+  <header aria-hidden="false">
+    <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="logo"></a>
   </header>
-  <div id="banner"></div>
-  <main id="main">
+  <main id="main" aria-hidden="false">
+    <div id="banner"></div>
     <div class="photograph-header">
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
     </div>
     <div class="sortSelect">
       <h4>Trier par</h4>
-      <select id="sortBy" onchange="displayMedia()">
+      <select id="sortBy">
         <option value="likes">Popularité</option>
         <option value="date">Date</option>
         <option value="name">Titre</option>
@@ -27,7 +27,7 @@
     </div>
     <div class="media_section"></div>
   </main>
-  <div id="contact_modal">
+  <div id="contact_modal" role="dialog" aria-hidden="true">
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
@@ -41,6 +41,7 @@
           <input class="text-control"	type="text"	id="last" name="last" minlength="2">
           <label for="email">E-mail</label>
           <input class="text-control"	type="email" id="email"	name="email">
+          <!--a voir -->
           <label>Votre message</label>
           <input class="message"/>
         </div>
@@ -48,7 +49,7 @@
       </form>
     </div>    
   </div>
-  <div id="lightBox">
+  <div id="lightBox" role="dialog" aria-hidden="true">
     <section class="lightBoxContainer">
       <div class="lightBoxContent">
         <button class="lightBoxArrows" id="leftArrow"><img src="./assets/icons/arrow.svg"></button>
@@ -59,6 +60,7 @@
     </section>
   </div>
   <footer></footer>
+  <script src="./scripts/utils/fetch.js"></script>
   <script src="./scripts/pages/photographer.js"></script>
   <script src="./scripts/factories/medias.js"></script>
   <script src="./scripts/utils/contactForm.js"></script>
