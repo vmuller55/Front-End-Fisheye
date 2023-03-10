@@ -92,5 +92,5 @@ function lightBoxDisplay (medias, photographerInfo, elements, index){
             : `<video controls autoplay "><source src="assets/images/media/${photographerInfo.name}/${medias[index].video}"  type="video/mp4" alt="vidéo de ${photographerInfo.name}"></video>`
         }
         <h2>${medias[index].title}</h2>
-    `    
+    `   
 }

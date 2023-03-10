@@ -21,6 +21,7 @@ function getPhotographerInfo(photographers, media){
     });
     displayMedia(mediaOfPhotographer, photographerInfo, sort.value);
     photographerHeader(photographerInfo, mediaOfPhotographer)
+
 }
 /**
 * Fonction qui récupère les infos du photographe séléctionné et initialise la fonction factory pour créer le header du photographe
@@ -32,6 +33,7 @@ function photographerHeader(infos, media){
 
 function displayMedia(media, photographerInfo, sort){
      const mediaSection = document.querySelector('.media_section');
+     
      if (sort === "date"){ 
         return media.sort((a, b) => new Date (a.date).valueOf() - new Date(b.date).valueOf()), mediaFactory(mediaSection, media, photographerInfo)
     }
