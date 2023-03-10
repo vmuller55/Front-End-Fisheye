@@ -1,7 +1,6 @@
 async function getPhotographers() {
-    
     const dataLocation = './data/photographers.json';
-    console.log("fetch")
+
     return fetch (dataLocation)
     .then(response => {
         if(response.ok) {

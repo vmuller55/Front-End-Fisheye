@@ -21,19 +21,19 @@
     padding-right: 80px;
 }
 
-.photographInfo h2{
+.photographInfo h1{
     font-size: 64px;
     color: #D3573C;
     margin: 0;
 }
 
-.photographInfo h3{
+.photographInfo h2{
     font-size: 24px;
     color: #901C1C;
     margin: 0;
 }
 
-.photographInfo p{
+.photographInfo h3{
     font-size: 18px;
     color: #525252;
     margin: 0;
@@ -53,6 +53,7 @@
     height: 200px;
     width: 200px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .contact_button{
@@ -67,6 +68,15 @@
     border-radius: 5px;
     cursor: pointer; 
 }
+.contact_button:hover{
+    background-color: #DB8876;
+    color: black;
+}
+.contact_button:focus{
+    background-color: #DB8876;
+    color: black;
+}
+
 
 /*Style de la modal*/
 
@@ -145,6 +155,11 @@ form input {
 
 /*Style de la gallerie d'images*/
 
+#sortBy span {
+    height: 1px;
+    width: 150px;
+    background-color: white;
+}
 .sortSelect{
     display: flex;
     margin-left: 100px;
@@ -152,6 +167,14 @@ form input {
     font-weight: 700;
     margin-bottom: 60px;
 }
+.sortSelect select:hover{
+    background-color: #DB8876;
+    color: black;
+}
+.sortSelect select:focus{
+    background-color: #DB8876;
+    color: black;
+} 
 
 .sortSelect select{
     margin-left: 25px;
@@ -179,6 +202,9 @@ form input {
     border: none;
     padding: 0;
 }
+.bloc-img button:hover{
+    cursor: pointer;
+}
 
 .mediaInfo {
     display: flex;
@@ -186,38 +212,11 @@ form input {
     color: #901C1C;
 }
 
-.mediaTittle{
+.mediaTittle h3{
     font-size: 24px;
     font-weight: 400;
-}
-
-.mediaTittle p{
     margin: 0;
     max-width: 250px;
-}
-
-#mediaLikesAndPrice {
-    display: flex;
-}
-
-#mediaLikesAndPrice p{
-    margin: auto;
-    margin-right: 7px;
-    font-weight: 500;
-    font-size: 24px;
-}
-
-#mediaLikesAndPrice img{
-    margin: auto;
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-    transition: all ease-in-out 0.5s;
-}
-
-#mediaLikesAndPrice .liked{
-    transform: rotate(360deg);
-    transition: all ease-in-out 0.5s;
 }
 
 .media_section{
@@ -231,19 +230,42 @@ form input {
 .media-card img{
     height: 300px;
     width: 350px;
+    object-fit: cover;
 }
 
 .media-card video{
     height: 300px;
     width: 350px;
-    object-fit: fill;
+    object-fit: cover;
 }
 
 .text-likes img {
     width: 10px;
     height: 10px;
 }
+.mediaLikesAndPrice {
+    display: flex;
+}
 
+.mediaLikesAndPrice h4{
+    margin: auto;
+    margin-right: 7px;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.mediaLikesAndPrice img{
+    margin: auto;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    transition: all ease-in-out 0.5s;
+}
+
+.mediaLikesAndPrice .liked{
+    transform: rotate(360deg);
+    transition: all ease-in-out 0.5s;
+}
 /*Style de la lightBox*/
 
 #lightBox{
@@ -325,8 +347,7 @@ form input {
     border-radius: 5px 5px 0px 0px;
     display: flex;
     justify-content: space-between;
-    font-size: 24px;
-    font-weight: 500;
+    
 }
 
 .likes {
@@ -338,11 +359,21 @@ form input {
     margin: auto;
 }
 
-.likes p{
+.likes h5{
+    margin:auto;
     margin-left: 30px;
     margin-right: 7px;
+    font-weight: 500;
+    font-size: 24px;
 }
 
 .price{
+    display: flex;
+    justify-content: center;
     margin-right: 34px;
+}
+.price h5 {
+    margin: auto;
+    font-weight: 500;
+    font-size: 24px;
 }

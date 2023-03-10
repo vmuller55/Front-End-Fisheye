@@ -61,7 +61,7 @@ function displayMedia(media, photographerInfo, sort){
 */
 function like(id) {
     const like = document.getElementById(id);
-    const totalLikesSection = document.querySelector(".likes p");
+    const totalLikesSection = document.querySelector(".likes h5");
     let likeContent = like.textContent;
     let totalLikes = totalLikesSection.textContent;  
         if (like.nextElementSibling.classList.contains("liked")) {

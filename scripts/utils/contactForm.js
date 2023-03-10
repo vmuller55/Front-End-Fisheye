@@ -5,12 +5,14 @@ const sendBtn = document.getElementById("sendButton")
 const modal = document.getElementById("contact_modal");
 const main = document.getElementById('main');
 const logo = document.querySelector('header');
+const body = document.querySelector("body");
 
 
 /**
  * Fonction pour ouvrir la modale de formulaire
  */
 function displayModal() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   let nameLocation = document.querySelector(".modal h2");
   let who = document.querySelector(".test");
   nameLocation.innerHTML = `Contactez-moi <br/> ${who.textContent}`;
@@ -19,7 +21,11 @@ function displayModal() {
   logo.setAttribute("aria-hidden", true);
   modal.style.display = "block";
   modal.focus();
-  disableScroll();
+  body.style.overflow = "hidden"
+  main.style.opacity = "0.5";
+  main.style.pointerEvents = "none";
+  logo.style.pointerEvents = "none";
+  logo.style.opacity = "0.5";
 }
 /**
  * Fonction pour fermer la modale
@@ -30,10 +36,11 @@ function closeModal() {
   banner.setAttribute("aria-hidden", "false");
   logo.setAttribute("aria-hidden", "false");
   modal.style.display = "none";
+  body.style.overflow = "unset"
+  main.style.pointerEvents = "unset";
+  logo.style.pointerEvents = "unset";
   main.style.opacity = "1";
-  banner.style.opacity = "1";
   logo.style.opacity = "1";
-  enableScroll();
 }
 /**
  * Permet de vérifier si le formulaire est rempli et affiche les infos en dans la console 
@@ -49,42 +56,3 @@ sendBtn.addEventListener("click", (e) => {
     window.alert("Veuillez renseigner complétement le formulaire");
   }
 })
-
-/**
-* Désactivation du scroll lorsque la modal est ouverte
-*/
-var keys = {37: 1, 38: 1, 39: 1, 40: 1};
-
-function preventDefault(e) {
-  e.preventDefault();
-}
-function preventDefaultForScrollKeys(e) {
-  if (keys[e.keyCode]) {
-    preventDefault(e);
-    return false;
-  }
-}
-
-var supportsPassive = false;
-try {
-  window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-    get: function () { supportsPassive = true; } 
-  }));
-} 
-catch(e) {}
-
-var wheelOpt = supportsPassive ? { passive: false } : false;
-var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
-
-function disableScroll() {
-  window.addEventListener('DOMMouseScroll', preventDefault, false); 
-  window.addEventListener(wheelEvent, preventDefault, wheelOpt); 
-  window.addEventListener('touchmove', preventDefault, wheelOpt); 
-  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
-}
-function enableScroll() {
-  window.removeEventListener('DOMMouseScroll', preventDefault, false);
-  window.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
-  window.removeEventListener('touchmove', preventDefault, wheelOpt);
-  window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
-}

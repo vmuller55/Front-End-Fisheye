@@ -1,6 +1,7 @@
 /**
- * Fonciton permettant d'ouvrir la lightBox et initialise la fonction factory relative
- * @param {number} id 
+ * Fonciton permettant d'ouvrir la lightBox et initialise la fonction display relative
+ * @param {number} mediaId 
+ * @param {number} photographId
  */
 async function openLightBox(mediaId, photographId) {
     const [{photographers}, {media}] = await getPhotographers();
@@ -26,6 +27,15 @@ async function openLightBox(mediaId, photographId) {
     })
     rightArrow.addEventListener("click", () => {
         indexCurrentImage = nextMedia(indexCurrentImage, mediaOfPhotographer, photographerInfo, elements)
+    })
+    window.addEventListener("keydown", (e) => {
+        e.preventDefault();
+        switch(e.key) {
+            case "ArrowLeft" : indexCurrentImage = previousMedia(indexCurrentImage, mediaOfPhotographer, photographerInfo, elements);
+            break
+            case "ArrowRight" : indexCurrentImage = nextMedia(indexCurrentImage, mediaOfPhotographer, photographerInfo, elements);
+            break
+        }
     })
     const header = document.querySelector("header");
     header.style.display = "none";

@@ -10,7 +10,7 @@
 </head>
 <body class="photographPage">
   <header aria-hidden="false">
-    <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="logo"></a>
+    <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="image du logo de fisheye"></a>
   </header>
   <main id="main" aria-hidden="false">
     <div id="banner"></div>
@@ -19,10 +19,12 @@
     </div>
     <div class="sortSelect">
       <h4>Trier par</h4>
-      <select id="sortBy">
-        <option value="likes">Popularité</option>
-        <option value="date">Date</option>
-        <option value="name">Titre</option>
+      <select id="sortBy" aria-label="choix du tri">
+        <option value="likes" label="Popularité">Popularité</option>
+        <span></span>
+        <option value="date" label="Date">Date</option>
+        <span></span>
+        <option value="name" label="Titre">Titre</option>
       </select>
     </div>
     <div class="media_section"></div>
@@ -31,7 +33,7 @@
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()">
+        <img src="assets/icons/close.svg" alt="image d'une croix pour fermer le formulaire" onclick="closeModal()">
       </header> 
       <form>
         <div>
@@ -41,9 +43,8 @@
           <input class="text-control"	type="text"	id="last" name="last" minlength="2">
           <label for="email">E-mail</label>
           <input class="text-control"	type="email" id="email"	name="email">
-          <!--a voir -->
-          <label>Votre message</label>
-          <input class="message"/>
+          <label for="message">Votre message</label>
+          <input class="message" type="text" id="message" name="message"/>
         </div>
         <button id="sendButton" class="contact_button">Envoyer</button>
       </form>
@@ -52,11 +53,11 @@
   <div id="lightBox" role="dialog" aria-hidden="true">
     <section class="lightBoxContainer">
       <div class="lightBoxContent">
-        <button class="lightBoxArrows" id="leftArrow"><img src="./assets/icons/arrow.svg"></button>
+        <button class="lightBoxArrows" id="leftArrow"><img alt="image d'une fleche vers la gauche pour retourner au media précédent" src="./assets/icons/arrow.svg"></button>
         <div class="lightBoxMedia"></div>
-        <button class="lightBoxArrows" id="rightArrow"><img src="./assets/icons/arrow.svg"></button>
+        <button class="lightBoxArrows" id="rightArrow"><img alt="image d'une fleche vers la droite pour retourner au media suivant" src="./assets/icons/arrow.svg"></button>
       </div>
-      <button class="lightBoxClose" onclick="closeLightBox()"><img src="./assets/icons/red-close .svg"></button>
+      <button class="lightBoxClose" onclick="closeLightBox()"><img alt="image d'une croix pour fermer le formulaire" src="./assets/icons/red-close .svg"></button>
     </section>
   </div>
   <footer></footer>
