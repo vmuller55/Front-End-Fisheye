@@ -1,3 +1,8 @@
+window.addEventListener("keydown", (e) => {
+    if(e.key == "Tab") {
+        console.log(e.target)
+    }
+})
 /**
 * Fonction qui met en place le code HTML relatif au header du photographe
 * @param {HTMLElement} target 
@@ -18,6 +23,7 @@ function photographerHeaderDisplay(target, data, media) {
     photographInfo.appendChild(h1);
     photographInfo.appendChild(h2);
     photographInfo.appendChild(tagline);
+    tagline.setAttribute("tabindex", "0");
     const blocContact = document.createElement("div");
     blocContact.setAttribute("id", "bloc-contact");
     const contactButton = document.createElement("button");
@@ -32,8 +38,13 @@ function photographerHeaderDisplay(target, data, media) {
     img.setAttribute("alt", "photo de " + data.name )
     target.appendChild(blocPicture);
     blocPicture.appendChild(img);
-    contactButton.addEventListener("click", function() { displayModal()});
-
+    h1.setAttribute("tabindex", "0");
+    h2.setAttribute("tabindex", "0");
+    img.setAttribute("tabindex", "0");
+    contactButton.setAttribute("tabindex", "0");
+    contactButton.addEventListener("click", function() { displayModal(), window.setTimeout(firstNameInput.focus(), 0)});
+    const closeModalFocus = document.querySelector(".modal header img");
+    closeModalFocus.addEventListener("click", function() {closeModal(), contactButton.focus()})
 }
 /**
 * Fonction qui met en place le code HTML relatif au petit encart de la page
@@ -57,6 +68,10 @@ function photographerBannerDisplay(data, media) {
     const priceText = document.createElement("h5");
     priceText.textContent = data.price + "€ / jour";
     price.appendChild(priceText);
+    target.setAttribute("tabindex", "0");
+    likesText.setAttribute("tabindex", "0");
+    likesImg.setAttribute("tabindex", "0");
+    priceText.setAttribute("tabindex", "0");
 }
 /**
  * Fonction permettant de créer le code HTML relatif aux cards des photos
@@ -65,26 +80,55 @@ function photographerBannerDisplay(data, media) {
  * @param {Array} photographer 
  */
 function mediaFactory(target, mediaData, photographer) {
-    target.innerHTML = mediaData.map((media) => `
-        <article class="media-card"> 
-        <div class = "bloc-img">
-        ${
-            media.image
-            ? `<button aria-label="zoom sur l'image" onclick="openLightBox(${media.id} , ${ media.photographerId})" > <img src="assets/images/media/${photographer.name}/${media.image}" alt="photo de ${photographer.name}-${media.title}"></img></button>`
-            : `<button aria-label="zoom sur l'image"" onclick="openLightBox(${media.id} , ${ media.photographerId})" > <video controls ><source src="assets/images/media/${photographer.name}/${media.video}" type="video/mp4" alt="vidéo de ${photographer.name}"></video></button>`
+    mediaData.forEach(media => {
+        const article = document.createElement("article");
+        article.classList.add("media-card");
+        target.appendChild(article);
+        const blocImg = document.createElement("div");
+        blocImg.classList.add("bloc-img");
+        article.appendChild(blocImg);
+        const button = document.createElement("button");
+        blocImg.appendChild(button);
+        if (media.image) {
+            const img = document.createElement("img");
+            img.setAttribute("src", "assets/images/media/" + photographer.name + "/" + media.image);
+            img.setAttribute("alt", "photo de " + photographer.name + " - " + media.title);
+            button.appendChild(img)
+        } else {
+            const video = document.createElement("video");
+            video.setAttribute("controls", "controls");
+            const source = document.createElement("source");
+            source.setAttribute("src", "assets/images/media/" + photographer.name + "/" + media.video);
+            source.setAttribute("alt", "video de " + photographer.name + " - " + media.title);
+            button.appendChild(video);
+            video.appendChild(source);
         }
-        </div>
-        <div class="mediaInfo">
-        <div class="mediaTittle">
-        <h3>${media.title}</h3>
-        </div>
-        <div class="mediaLikesAndPrice">
-        <h4 id="${media.id}">${media.likes}</h4>
-        <img class="noLike" src="./assets/icons/heart-solid-red.svg" alt="bouton like en forme de coeur" onclick="like(${media.id})">
-        </div>
-        </div>
-        </article>
-    `
-    )
-    .join('')
+        button.addEventListener("click", function() {openLightBox(mediaData, photographer, media)})
+        const mediaInfo = document.createElement("div");
+        mediaInfo.classList.add("mediaInfo");
+        article.appendChild(mediaInfo);
+        const mediaTittle = document.createElement("div");
+        mediaTittle.classList.add("mediaTittle");
+        mediaInfo.appendChild(mediaTittle);
+        const h3 = document.createElement("h3");
+        h3.setAttribute("tabindex", "0");
+        h3.textContent = media.title;
+        mediaTittle.appendChild(h3);
+        const mediaLikeAndPrice = document.createElement("div");
+        mediaLikeAndPrice.classList.add("mediaLikesAndPrice");
+        mediaInfo.appendChild(mediaLikeAndPrice);
+        const h4 = document.createElement("h4");
+        h4.setAttribute("id", media.id);
+        h4.textContent = media.likes;
+        h4.setAttribute("tabindex", "0");
+        mediaLikeAndPrice.appendChild(h4);
+        const img = document.createElement("img");
+        img.classList.add("noLike");
+        img.setAttribute("src", "./assets/icons/heart-solid-red.svg");
+        img.setAttribute("alt", "bouton like en forme de coeur");
+        img.setAttribute("tabindex", "0");
+        img.addEventListener("click", function() {like(media.id)});
+        img.addEventListener("keypress", function() {like(media.id)});
+        mediaLikeAndPrice.appendChild(img);
+    });
 }

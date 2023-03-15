@@ -1,3 +1,8 @@
+/**
+ * Fonction permetant de récuperer les informations du fichier json
+ * @returns le resultat du fetch dans un Array
+ */
+
 async function getPhotographers() {
     const dataLocation = './data/photographers.json';
 

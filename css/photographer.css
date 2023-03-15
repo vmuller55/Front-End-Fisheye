@@ -3,8 +3,10 @@
 }
 .photographPage footer{
     height: 114px ;
-}
+} 
+
 /*Style du header de la page photographe*/
+
 .photograph-header {
     background-color: #FAFAFA;
     max-width: 1240px;
@@ -68,271 +70,16 @@
     border-radius: 5px;
     cursor: pointer; 
 }
+
 .contact_button:hover{
     background-color: #DB8876;
     color: black;
 }
+
 .contact_button:focus{
     background-color: #DB8876;
     color: black;
 }
-
-
-/*Style de la modal*/
-
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    max-width: 670px;
-    max-height: 900px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    padding-top: 15px;
-    margin: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.modal header {
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-}
-
-.modal header img {
-    cursor: pointer;
-    top: 35px;
-    right: 35px;
-    position: absolute;
-}
-
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    margin-left: 0px;
-    margin-top: 0px;
-}
-
-form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-form label {
-    color: #312E2E;
-    font-size: 36px;
-}
-
-form div {
-    display: flex;
-    flex-direction: column;
-    row-gap: 0px;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-}
-
-form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
-    font-size: 28px;
-    padding-left: 15px;
-}
-
-.message{
-    height: 170px;
-}
-
-/*Style de la gallerie d'images*/
-
-#sortBy span {
-    height: 1px;
-    width: 150px;
-    background-color: white;
-}
-.sortSelect{
-    display: flex;
-    margin-left: 100px;
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 60px;
-}
-.sortSelect select:hover{
-    background-color: #DB8876;
-    color: black;
-}
-.sortSelect select:focus{
-    background-color: #DB8876;
-    color: black;
-} 
-
-.sortSelect select{
-    margin-left: 25px;
-    background-color: #911C1C;
-    color: #ffffff; 
-    width: 170px;
-    font-size: 18px;
-    font-weight: 700;
-    border-radius: 5px;
-}
-
-.sortSelect option{
-    margin-left: 20px;
-    text-align: center;
-}
-
-.media-card{
-    display: flex;
-    flex-direction: column;
-}
-
-.bloc-img button{
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-}
-.bloc-img button:hover{
-    cursor: pointer;
-}
-
-.mediaInfo {
-    display: flex;
-    justify-content: space-between;
-    color: #901C1C;
-}
-
-.mediaTittle h3{
-    font-size: 24px;
-    font-weight: 400;
-    margin: 0;
-    max-width: 250px;
-}
-
-.media_section{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    row-gap: 70px;
-    column-gap: 95px;
-}
-
-.media-card img{
-    height: 300px;
-    width: 350px;
-    object-fit: cover;
-}
-
-.media-card video{
-    height: 300px;
-    width: 350px;
-    object-fit: cover;
-}
-
-.text-likes img {
-    width: 10px;
-    height: 10px;
-}
-.mediaLikesAndPrice {
-    display: flex;
-}
-
-.mediaLikesAndPrice h4{
-    margin: auto;
-    margin-right: 7px;
-    font-weight: 500;
-    font-size: 24px;
-}
-
-.mediaLikesAndPrice img{
-    margin: auto;
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-    transition: all ease-in-out 0.5s;
-}
-
-.mediaLikesAndPrice .liked{
-    transform: rotate(360deg);
-    transition: all ease-in-out 0.5s;
-}
-/*Style de la lightBox*/
-
-#lightBox{
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-}
-
-.lightBoxContainer{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-.lightBoxContainer button{
-    cursor: pointer;
-}
-.lightBoxContent{
-    display: flex;
-    align-items: center;
-}
-.lightBoxMedia {
-    width: 1050px;
-    height: 900px;
-    border-radius: 5px;
-}
-.lightBoxMedia h2{
-    color: #901C1C;
-    font-weight: 400;
-    font-size: 24px;
-    margin-top: 10px;
-}
-
-.lightBoxMedia img, .lightBoxMedia video {
-    width: inherit;
-    height: inherit;
-    object-fit: cover;
-    border-radius: 5px;
-}
-.lightBoxArrows {
-    border: 0;
-    background: transparent;
-    width: 50px;
-    height: 50px;
-    margin-left: 34px;
-}
-.lightBoxArrows:nth-child(1) {
-    transform: rotate(180deg);
-    border: 0;
-    background: transparent;
-    margin-left: 0;
-    margin-right: 34px;
-}
-.lightBoxClose{
-    position: absolute;
-    top: 5px;
-    right: -27px;
-    border: none;
-    background-color: transparent;
-}
-.lightBoxClose img{
-    width: 42px;
-    height: 42px; 
-}
-
-
 
 /*Style de la bannière en bas de page*/
 
@@ -346,8 +93,7 @@ form input {
     right: 35px;
     border-radius: 5px 5px 0px 0px;
     display: flex;
-    justify-content: space-between;
-    
+    justify-content: space-between;  
 }
 
 .likes {
@@ -372,6 +118,7 @@ form input {
     justify-content: center;
     margin-right: 34px;
 }
+
 .price h5 {
     margin: auto;
     font-weight: 500;

@@ -5,10 +5,12 @@ var link = window.location.href;
 var url = new URL(link);
 var id = url.searchParams.get("id");
 /**
-* Fonction qui récupère le photographe lié à l'id de l'url
-* @returns les infos du photographe correspondant
-*/
+ * Fonction permettant de récuperer les information relatives au photographe séléctionné et d'initialiser les fonctions pour trier et afficher les médias de l'artiste
+ * @param {Array} photographers 
+ * @param {Array} media 
+ */
 function getPhotographerInfo(photographers, media){
+    const location = document.querySelector(".media_section");
     const photographerInfo = photographers.find(
         (e) => e.id == id
         )
@@ -17,11 +19,13 @@ function getPhotographerInfo(photographers, media){
         )
     let sort = document.getElementById("sortBy");
     sort.addEventListener("change", () => {
-            displayMedia(mediaOfPhotographer, photographerInfo, sort.value)   
+        location.innerHTML = "";
+        mediaOfPhotographer == sortMedia(mediaOfPhotographer, sort.value);  
+        mediaFactory(location, mediaOfPhotographer, photographerInfo);
     });
-    displayMedia(mediaOfPhotographer, photographerInfo, sort.value);
+    mediaOfPhotographer.sort((a,b) => b.likes - a.likes);
+    mediaFactory(location, mediaOfPhotographer, photographerInfo);
     photographerHeader(photographerInfo, mediaOfPhotographer)
-
 }
 /**
 * Fonction qui récupère les infos du photographe séléctionné et initialise la fonction factory pour créer le header du photographe
@@ -30,12 +34,15 @@ function photographerHeader(infos, media){
      const photographerHeader = document.querySelector('.photograph-header');
      photographerHeaderDisplay(photographerHeader, infos, media);
 }
-
-function displayMedia(media, photographerInfo, sort){
-     const mediaSection = document.querySelector('.media_section');
-     
+/**
+ * Fonction permettant de trier selon le choix fait par l'utilisateur!
+ * @param {Array} media 
+ * @param {string} sort 
+ * @returns Les médias triés
+ */
+function sortMedia(media, sort){
      if (sort === "date"){ 
-        return media.sort((a, b) => new Date (a.date).valueOf() - new Date(b.date).valueOf()), mediaFactory(mediaSection, media, photographerInfo)
+        return media.sort((a, b) => new Date (a.date).valueOf() - new Date(b.date).valueOf())
     }
     else{
         if(sort === "name") {
@@ -47,16 +54,15 @@ function displayMedia(media, photographerInfo, sort){
                 } else {
                     return 0
                 }
-            }), mediaFactory(mediaSection, media, photographerInfo) ;
+            })
         }
         else {
-            return media.sort((a, b) => b.likes - a.likes), mediaFactory(mediaSection, media, photographerInfo)
+            return media.sort((a, b) => b.likes - a.likes)
         }
-    }
-     
+    }  
 }
 /**
-* Fonction permettant d'enlever le like 
+* Fonction permettant de liker ou disliker 
 * @param {String} id 
 */
 function like(id) {

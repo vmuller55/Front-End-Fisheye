@@ -6,8 +6,7 @@ const modal = document.getElementById("contact_modal");
 const main = document.getElementById('main');
 const logo = document.querySelector('header');
 const body = document.querySelector("body");
-
-
+const contactButton = document.querySelector(".contact_button");
 /**
  * Fonction pour ouvrir la modale de formulaire
  */
@@ -19,13 +18,35 @@ function displayModal() {
   modal.setAttribute("aria-hidden", false);
   main.setAttribute("aria-hidden", true);
   logo.setAttribute("aria-hidden", true);
+  banner.setAttribute("aria-hidden", true);
   modal.style.display = "block";
-  modal.focus();
   body.style.overflow = "hidden"
   main.style.opacity = "0.5";
   main.style.pointerEvents = "none";
   logo.style.pointerEvents = "none";
   logo.style.opacity = "0.5";
+  document.addEventListener('keydown', (e) => {
+    if(e.key === "Escape") {
+      e.preventDefault();
+      closeModal(); 
+    }
+  })
+  document.addEventListener("keydown", (e) => tabInModal(e));
+}
+/**
+ * Fonction permettant de tabuler uniquement dans la modale quand celle ci est ouverte
+ * @param {event} e 
+ */
+function tabInModal(e) {
+  if (e.key === 'Tab') {
+    let focusable = document.querySelector(".modal").querySelectorAll("input, button");
+    let first = focusable[0];
+    let last = focusable[focusable.length -1];
+    if(e.target === last) {
+      first.focus();
+      e.preventDefault();
+    }
+  }
 }
 /**
  * Fonction pour fermer la modale
@@ -40,7 +61,8 @@ function closeModal() {
   main.style.pointerEvents = "unset";
   logo.style.pointerEvents = "unset";
   main.style.opacity = "1";
-  logo.style.opacity = "1";
+  logo.style.opacity = "1"; 
+  contactButton.focus();
 }
 /**
  * Permet de vérifier si le formulaire est rempli et affiche les infos en dans la console 
