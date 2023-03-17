@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /**
  * Fonction permettant de trier selon le choix fait par l'utilisateur
  * @param {Array} media 

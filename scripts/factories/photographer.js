@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 function photographerFactory(data) {
     /**
      * Récupération des infos sur les photographe

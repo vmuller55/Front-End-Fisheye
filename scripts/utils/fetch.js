@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 /**
  * Fonction permetant de récuperer les informations du fichier json
  * @returns le resultat du fetch dans un Array

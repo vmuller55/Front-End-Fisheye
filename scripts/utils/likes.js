@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /**
 * Fonction permettant de liker ou de retirer son like une photo
 * @param {String} id 

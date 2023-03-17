@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /**
 * Fonction qui met en place le code HTML relatif au petit encart de la page
 */
