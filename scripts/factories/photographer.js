@@ -1,6 +1,6 @@
 function photographerFactory(data) {
     /**
-     * Récupération des infos sur les photographe dans l'objet data
+     * Récupération des infos sur les photographe
      */
     const { name, portrait, id, city, country, tagline, price} = data;
     /**
@@ -22,7 +22,7 @@ function photographerFactory(data) {
         h3.textContent = city + ", " + country;
         const h4 = document.createElement('h4');
         h4.textContent = tagline;
-        const h5 = document.createElement('h5');
+        const h5 = document.createElement('p');
         h5.textContent = price + "€/jour";
         const a = document.createElement('a');
         a.href='photographer.html?id=' + id;

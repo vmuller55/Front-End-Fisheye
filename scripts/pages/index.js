@@ -1,6 +1,6 @@
 /**
- * Fonction qui initialise la fonction fatory relative 
- * @param {*} photographers const déclaré dans la fonction init, elle récupère le resultat du fetch de la fonction getPhotographers
+ * Fonction qui initialise la fonction factory relative 
+ * @param {Array} photographers 
  */
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
@@ -12,10 +12,9 @@ async function displayData(photographers) {
     });
 };
 /**
- * Fonction qui récupère dans un objet le résultat du fetch 
+ * Fetch des data et initialisation de la fonction pour afficher les photographes
  */
 async function init() {
-    // Récupère les datas des photographes
     const [{ photographers }] = await getPhotographers();
     displayData(photographers);
 };

@@ -1,17 +1,19 @@
 const firstNameInput = document.getElementById("first");
 const lastNameInput = document.getElementById("last");
 const emailInput = document.getElementById("email");
+const messageInput = document.getElementById("message");
 const sendBtn = document.getElementById("sendButton")
 const modal = document.getElementById("contact_modal");
 const main = document.getElementById('main');
 const logo = document.querySelector('header');
 const body = document.querySelector("body");
-const contactButton = document.querySelector(".contact_button");
+const btnFocus = document.querySelector("contact_button")
 /**
  * Fonction pour ouvrir la modale de formulaire
  */
 function displayModal() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  triggerElement = document.activeElement;
   let nameLocation = document.querySelector(".modal h2");
   let who = document.querySelector(".test");
   nameLocation.innerHTML = `Contactez-moi <br/> ${who.textContent}`;
@@ -22,16 +24,23 @@ function displayModal() {
   modal.style.display = "block";
   body.style.overflow = "hidden"
   main.style.opacity = "0.5";
+  logo.style.opacity = "0.5";
   main.style.pointerEvents = "none";
   logo.style.pointerEvents = "none";
-  logo.style.opacity = "0.5";
+  
+  /**
+   * Listenner pour fermer la modale avec la touche escape
+   */
   document.addEventListener('keydown', (e) => {
     if(e.key === "Escape") {
-      e.preventDefault();
       closeModal(); 
-    }
+    } 
   })
+  /**
+   * Listenner pour "piéger" la tabulation à l'intérieur de la modale
+   */
   document.addEventListener("keydown", (e) => tabInModal(e));
+
 }
 /**
  * Fonction permettant de tabuler uniquement dans la modale quand celle ci est ouverte
@@ -62,7 +71,7 @@ function closeModal() {
   logo.style.pointerEvents = "unset";
   main.style.opacity = "1";
   logo.style.opacity = "1"; 
-  contactButton.focus();
+  triggerElement.focus();
 }
 /**
  * Permet de vérifier si le formulaire est rempli et affiche les infos en dans la console 
@@ -70,8 +79,12 @@ function closeModal() {
 sendBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if(firstNameInput.value && lastNameInput.value && emailInput.value) {
-    console.log("Votre prénom : " + firstNameInput.value + " Votre nom : " + lastNameInput.value + " Votre email : " +  emailInput.value)
+    console.log("Votre prénom : " + firstNameInput.value + " Votre nom : " + lastNameInput.value + " Votre email : " +  emailInput.value + " votre message : " + messageInput.value)
     window.alert(firstNameInput.value + " votre message a bien été envoyé" )
+    firstNameInput.value = "";
+    lastNameInput.value = "";
+    emailInput.value = "";
+    messageInput.value = "";
     closeModal();
   }
   else{

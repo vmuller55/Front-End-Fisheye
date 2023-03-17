@@ -1,8 +1,8 @@
 #contact_modal {
     display: none;
 }
-.photographPage footer{
-    height: 114px ;
+.photographPage{
+    padding-bottom: 114px ;
 } 
 
 /*Style du header de la page photographe*/
@@ -15,6 +15,7 @@
     display: flex;
     justify-content: space-between;
     font-weight: 400;
+    border-radius: 5px;
 }
 
 .photographInfo {
@@ -56,6 +57,7 @@
     width: 200px;
     border-radius: 50%;
     object-fit: cover;
+    box-shadow: 0px 0px 10px 0px black;
 }
 
 .contact_button{
@@ -123,4 +125,20 @@
     margin: auto;
     font-weight: 500;
     font-size: 24px;
+}
+
+@media screen and (min-width: 1440px) {
+    
+    .photograph-header{
+        max-width: unset;
+        margin: 30px 100px 20px 100px
+    }
+
+    .media_section{
+        margin: 0px 100px;
+        justify-content: space-between;
+        row-gap: 10px;
+        column-gap: 50px;
+
+    }
 }

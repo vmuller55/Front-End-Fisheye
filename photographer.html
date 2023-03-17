@@ -12,9 +12,9 @@
     <header>
       <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="image du logo de fisheye"></a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false" tabindex="-1">
       <!-- Bannière du photographe -->
-      <div class="photograph-header"></div>
+      <div class="photograph-header" aria-label="Information sur le photographe"></div>
       <!-- Choix du tri des médias -->
       <div class="sortSelect">
         <h4>Trier par</h4>
@@ -29,24 +29,25 @@
       <div id="banner"></div>
     </main>
     <!-- Modal -->
-    <div id="contact_modal" role="dialog">
+    <div id="contact_modal" role="dialog" aria-hidden="true">
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" alt="image d'une croix pour fermer le formulaire">
         </header> 
-        <form>
+        <!-- Formulaire -->
+        <form role="form" aria-label="formulaire de contacte">
           <div>
             <label for="first">Prénom</label>
-            <input class="text-control"	type="text"	id="first" name="first"	minlength="2">
+            <input class="text-control"	type="text"	id="first" name="first"	minlength="2" placeholder="Prénom">
             <label for="last">Nom</label>
-            <input class="text-control"	type="text"	id="last" name="last" minlength="2">
+            <input class="text-control"	type="text"	id="last" name="last" minlength="2" placeholder="Nom">
             <label for="email">E-mail</label>
-            <input class="text-control"	type="email" id="email"	name="email">
+            <input class="text-control"	type="email" id="email"	name="email" placeholder="adresse@mail.com">
             <label for="message">Votre message</label>
-            <input class="message" type="text" id="message" name="message">
+            <input class="message" type="text" id="message" name="message" placeholder="Vous pouvez écrire votre message ici">
           </div>
-          <button id="sendButton" class="contact_button">Envoyer</button>
+          <button id="sendButton" class="contact_button" type="submit" aria-label="Bouton de validation du formulaire">Envoyer</button>
         </form>
       </div>    
     </div>
@@ -61,11 +62,15 @@
         <button class="lightBoxClose"><img alt="image d'une croix pour fermer le formulaire" src="./assets/icons/red-close .svg"></button>
       </section>
     </div>
-    <footer></footer>
+    <!-- Scripts -->
     <script src="./scripts/utils/fetch.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
     <script src="./scripts/factories/medias.js"></script>
     <script src="./scripts/utils/contactForm.js"></script>
     <script src="./scripts/utils/lightBox.js"></script>
+    <script src="./scripts/utils/likes.js"></script>
+    <script src="./scripts/utils/sort.js"></script>
+    <script src="./scripts/utils/headerPhotographer.js"></script>
+    <script src="./scripts/utils/insert.js"></script>
   </body>
 </html>
