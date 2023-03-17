@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /**
  * Fonction permettant de créer le code HTML relatif aux cards des photos
  * @param {HTMLElement} target 

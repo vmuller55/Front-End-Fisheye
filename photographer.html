@@ -14,7 +14,7 @@
     </header>
     <main id="main" aria-hidden="false" tabindex="-1">
       <!-- Bannière du photographe -->
-      <div class="photograph-header" aria-label="Information sur le photographe"></div>
+      <div class="photograph-header"></div>
       <!-- Choix du tri des médias -->
       <div class="sortSelect">
         <h4>Trier par</h4>
@@ -36,7 +36,7 @@
           <img src="assets/icons/close.svg" alt="image d'une croix pour fermer le formulaire">
         </header> 
         <!-- Formulaire -->
-        <form role="form" aria-label="formulaire de contacte">
+        <form  aria-label="formulaire de contacte">
           <div>
             <label for="first">Prénom</label>
             <input class="text-control"	type="text"	id="first" name="first"	minlength="2" placeholder="Prénom">
@@ -53,14 +53,14 @@
     </div>
     <!-- LightBox -->
     <div id="lightBox" role="dialog">
-      <section class="lightBoxContainer">
+      <div class="lightBoxContainer">
         <div class="lightBoxContent">
           <button class="lightBoxArrows" id="leftArrow"><img alt="image d'une fleche vers la gauche pour retourner au media précédent" src="./assets/icons/arrow.svg"></button>
           <div class="lightBoxMedia"></div>
           <button class="lightBoxArrows" id="rightArrow"><img alt="image d'une fleche vers la droite pour retourner au media suivant" src="./assets/icons/arrow.svg"></button>
         </div>
-        <button class="lightBoxClose"><img alt="image d'une croix pour fermer le formulaire" src="./assets/icons/red-close .svg"></button>
-      </section>
+        <button class="lightBoxClose"><img alt="image d'une croix pour fermer le formulaire" src="./assets/icons/red-close.svg"></button>
+      </div>
     </div>
     <!-- Scripts -->
     <script src="./scripts/utils/fetch.js"></script>

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 const elements = document.querySelector(".lightBoxMedia");
 const lightBox = document.getElementById("lightBox");
 const leftArrow = document.getElementById("leftArrow");
